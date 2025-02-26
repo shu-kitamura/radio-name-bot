@@ -1,2 +1,3 @@
-# radio-name-bot
-Generate a radio name using Gemini and post it to X
+# ラジオネーム生成ボット
+
+Gemini を使用してラジオネームを生成し、X にポストするプログラム
