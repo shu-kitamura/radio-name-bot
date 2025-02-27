@@ -3,7 +3,7 @@ import sqlite3
 from datetime import datetime
 
 import tweepy
-from google import genai
+import google.generativeai as genai
 
 # Radio name bot Error
 class RadioNameBotError(Exception):
@@ -40,11 +40,9 @@ def get_prompt(past_radio_names: list, prompt_txt_file: str = "prompt.txt") -> s
 # Send request to Google Gemini API
 def send_request_to_gemini_api(api_key: str, prompt: str) -> str:
     try:
-        client = genai.Client(api_key=api_key)
-        response = client.models.generate_content(
-            model="gemini-2.0-flash",
-            contents=[prompt]
-        )
+        genai.configure(api_key=api_key)
+        model = genai.GenerativeModel("gemini-2.0-flash")
+        response = model.generate_content(prompt)
         return response.text
     except Exception as e:
         raise RadioNameBotError(f"Failed to send request to Gemini API: {e}")
