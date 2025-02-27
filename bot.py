@@ -5,8 +5,6 @@ from datetime import datetime
 import tweepy
 from google import genai
 
-DB_FILE = "radio_names.db"
-
 # Radio name bot Error
 class RadioNameBotError(Exception):
     pass
@@ -91,6 +89,8 @@ def print_log(log_level: str, log: str):
         raise ValueError(f"Invalid log level: {log_level}")
     
     print(f"{datetime.now()} [{log_level}] {log}")
+
+DB_FILE = "radio_names.db"
 
 # get API Key from Enviroment Variable
 try:
