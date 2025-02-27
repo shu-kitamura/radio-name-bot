@@ -33,7 +33,7 @@ def gen_radio_name(api_key: str, db_file: str = "radio_names.db", prompt_txt_fil
 def get_prompt(past_radio_names: list, prompt_txt_file: str = "prompt.txt") -> str:
     try:
         with open(prompt_txt_file, "r") as f:
-            return f"{f.read()}{",".join(past_radio_names)}"
+            return f"{f.read()}{','.join(past_radio_names)}"
     except FileNotFoundError:
         raise RadioNameBotError(f"File '{prompt_txt_file}' not found.")
 
